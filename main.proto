@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-package main;
-
 message Email {
     string from = 1;
     string to = 2;

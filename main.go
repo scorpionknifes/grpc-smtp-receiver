@@ -6,13 +6,16 @@ import (
 
 	"github.com/emersion/go-smtp"
 	"github.com/spf13/viper"
+	"google.golang.org/grpc"
 )
+
+var receivers map[string]*grpc.ClientConn
+var conf Config
 
 func main() {
 
 	//Read config
 	viper.SetConfigFile("./config.json")
-	var conf Config
 
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file, %s", err)
@@ -21,7 +24,18 @@ func main() {
 	if err != nil {
 		log.Fatalf("Unable to decode into config file, %v", err)
 	}
-	log.Println(conf)
+
+	receivers = make(map[string]*grpc.ClientConn)
+	for _, server := range conf.Server {
+		var conn *grpc.ClientConn
+		conn, err := grpc.Dial(server.GRPCServer, grpc.WithInsecure())
+		if err != nil {
+			log.Fatalf("could not connect: %s", err)
+		}
+		defer conn.Close()
+		receivers[server.EmailDomain] = conn
+	}
+	log.Println(receivers)
 
 	// Start SMTP server
 	s := smtp.NewServer(&SMTPHandlers{})

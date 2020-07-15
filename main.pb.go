@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.25.0-devel
 // 	protoc        v3.12.3
-// source: smtp.proto
+// source: main.proto
 
-package example-receiver
+package main
 
 import (
 	context "context"
@@ -42,7 +42,7 @@ type Email struct {
 func (x *Email) Reset() {
 	*x = Email{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_smtp_proto_msgTypes[0]
+		mi := &file_main_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -55,7 +55,7 @@ func (x *Email) String() string {
 func (*Email) ProtoMessage() {}
 
 func (x *Email) ProtoReflect() protoreflect.Message {
-	mi := &file_smtp_proto_msgTypes[0]
+	mi := &file_main_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -68,7 +68,7 @@ func (x *Email) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Email.ProtoReflect.Descriptor instead.
 func (*Email) Descriptor() ([]byte, []int) {
-	return file_smtp_proto_rawDescGZIP(), []int{0}
+	return file_main_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Email) GetFrom() string {
@@ -103,7 +103,7 @@ type Status struct {
 func (x *Status) Reset() {
 	*x = Status{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_smtp_proto_msgTypes[1]
+		mi := &file_main_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -116,7 +116,7 @@ func (x *Status) String() string {
 func (*Status) ProtoMessage() {}
 
 func (x *Status) ProtoReflect() protoreflect.Message {
-	mi := &file_smtp_proto_msgTypes[1]
+	mi := &file_main_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -129,7 +129,7 @@ func (x *Status) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Status.ProtoReflect.Descriptor instead.
 func (*Status) Descriptor() ([]byte, []int) {
-	return file_smtp_proto_rawDescGZIP(), []int{1}
+	return file_main_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Status) GetStatus() bool {
@@ -139,42 +139,41 @@ func (x *Status) GetStatus() bool {
 	return false
 }
 
-var File_smtp_proto protoreflect.FileDescriptor
+var File_main_proto protoreflect.FileDescriptor
 
-var file_smtp_proto_rawDesc = []byte{
-	0x0a, 0x0a, 0x73, 0x6d, 0x74, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04, 0x6d, 0x61,
-	0x69, 0x6e, 0x22, 0x3f, 0x0a, 0x05, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x66,
-	0x72, 0x6f, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x66, 0x72, 0x6f, 0x6d, 0x12,
-	0x0e, 0x0a, 0x02, 0x74, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x74, 0x6f, 0x12,
-	0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64,
-	0x61, 0x74, 0x61, 0x22, 0x20, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x16, 0x0a,
-	0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x73,
-	0x74, 0x61, 0x74, 0x75, 0x73, 0x32, 0x30, 0x0a, 0x04, 0x53, 0x4d, 0x54, 0x50, 0x12, 0x28, 0x0a,
-	0x09, 0x53, 0x65, 0x6e, 0x64, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x0b, 0x2e, 0x6d, 0x61, 0x69,
-	0x6e, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x1a, 0x0c, 0x2e, 0x6d, 0x61, 0x69, 0x6e, 0x2e, 0x53,
+var file_main_proto_rawDesc = []byte{
+	0x0a, 0x0a, 0x6d, 0x61, 0x69, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x3f, 0x0a, 0x05,
+	0x45, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x66, 0x72, 0x6f, 0x6d, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x66, 0x72, 0x6f, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x74, 0x6f, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x74, 0x6f, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74,
+	0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x20, 0x0a,
+	0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75,
+	0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x32,
+	0x26, 0x0a, 0x04, 0x53, 0x4d, 0x54, 0x50, 0x12, 0x1e, 0x0a, 0x09, 0x53, 0x65, 0x6e, 0x64, 0x45,
+	0x6d, 0x61, 0x69, 0x6c, 0x12, 0x06, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x1a, 0x07, 0x2e, 0x53,
 	0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_smtp_proto_rawDescOnce sync.Once
-	file_smtp_proto_rawDescData = file_smtp_proto_rawDesc
+	file_main_proto_rawDescOnce sync.Once
+	file_main_proto_rawDescData = file_main_proto_rawDesc
 )
 
-func file_smtp_proto_rawDescGZIP() []byte {
-	file_smtp_proto_rawDescOnce.Do(func() {
-		file_smtp_proto_rawDescData = protoimpl.X.CompressGZIP(file_smtp_proto_rawDescData)
+func file_main_proto_rawDescGZIP() []byte {
+	file_main_proto_rawDescOnce.Do(func() {
+		file_main_proto_rawDescData = protoimpl.X.CompressGZIP(file_main_proto_rawDescData)
 	})
-	return file_smtp_proto_rawDescData
+	return file_main_proto_rawDescData
 }
 
-var file_smtp_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_smtp_proto_goTypes = []interface{}{
-	(*Email)(nil),  // 0: main.Email
-	(*Status)(nil), // 1: main.Status
+var file_main_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_main_proto_goTypes = []interface{}{
+	(*Email)(nil),  // 0: Email
+	(*Status)(nil), // 1: Status
 }
-var file_smtp_proto_depIdxs = []int32{
-	0, // 0: main.SMTP.SendEmail:input_type -> main.Email
-	1, // 1: main.SMTP.SendEmail:output_type -> main.Status
+var file_main_proto_depIdxs = []int32{
+	0, // 0: SMTP.SendEmail:input_type -> Email
+	1, // 1: SMTP.SendEmail:output_type -> Status
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -182,13 +181,13 @@ var file_smtp_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_smtp_proto_init() }
-func file_smtp_proto_init() {
-	if File_smtp_proto != nil {
+func init() { file_main_proto_init() }
+func file_main_proto_init() {
+	if File_main_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_smtp_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_main_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Email); i {
 			case 0:
 				return &v.state
@@ -200,7 +199,7 @@ func file_smtp_proto_init() {
 				return nil
 			}
 		}
-		file_smtp_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_main_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Status); i {
 			case 0:
 				return &v.state
@@ -217,20 +216,20 @@ func file_smtp_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_smtp_proto_rawDesc,
+			RawDescriptor: file_main_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_smtp_proto_goTypes,
-		DependencyIndexes: file_smtp_proto_depIdxs,
-		MessageInfos:      file_smtp_proto_msgTypes,
+		GoTypes:           file_main_proto_goTypes,
+		DependencyIndexes: file_main_proto_depIdxs,
+		MessageInfos:      file_main_proto_msgTypes,
 	}.Build()
-	File_smtp_proto = out.File
-	file_smtp_proto_rawDesc = nil
-	file_smtp_proto_goTypes = nil
-	file_smtp_proto_depIdxs = nil
+	File_main_proto = out.File
+	file_main_proto_rawDesc = nil
+	file_main_proto_goTypes = nil
+	file_main_proto_depIdxs = nil
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -258,7 +257,7 @@ func NewSMTPClient(cc grpc.ClientConnInterface) SMTPClient {
 
 func (c *sMTPClient) SendEmail(ctx context.Context, in *Email, opts ...grpc.CallOption) (*Status, error) {
 	out := new(Status)
-	err := c.cc.Invoke(ctx, "/main.SMTP/SendEmail", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/SMTP/SendEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -292,7 +291,7 @@ func _SMTP_SendEmail_Handler(srv interface{}, ctx context.Context, dec func(inte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/main.SMTP/SendEmail",
+		FullMethod: "/SMTP/SendEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SMTPServer).SendEmail(ctx, req.(*Email))
@@ -301,7 +300,7 @@ func _SMTP_SendEmail_Handler(srv interface{}, ctx context.Context, dec func(inte
 }
 
 var _SMTP_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "main.SMTP",
+	ServiceName: "SMTP",
 	HandlerType: (*SMTPServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -310,5 +309,5 @@ var _SMTP_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "smtp.proto",
+	Metadata: "main.proto",
 }

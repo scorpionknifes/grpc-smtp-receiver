@@ -19,7 +19,6 @@ func (handlers *SMTPHandlers) Login(state *smtp.ConnectionState, username, passw
 
 // AnonymousLogin requires clients to authenticate using SMTP AUTH before sending emails
 func (handlers *SMTPHandlers) AnonymousLogin(state *smtp.ConnectionState) (smtp.Session, error) {
-	log.Println(state)
 	return &Session{}, nil
 }
 
@@ -38,9 +37,19 @@ func (s *Session) Mail(from string, opts smtp.MailOptions) error {
 
 // Rcpt rcpt handler
 func (s *Session) Rcpt(to string) error {
-	if !strings.HasSuffix(to, "@openhab.tsatech.nz") {
+
+	var exist bool
+
+	for _, server := range conf.Server {
+		if strings.HasSuffix(to, "@"+server.EmailDomain) {
+			exist = true
+		}
+	}
+
+	if !exist {
 		return smtp.ErrAuthRequired
 	}
+
 	s.to = to
 	return nil
 }
@@ -52,6 +61,8 @@ func (s *Session) Data(r io.Reader) error {
 		return err
 	}
 	s.data = string(b)
+	err = sendEmail(*s)
+	log.Println(err)
 	return nil
 }
 
