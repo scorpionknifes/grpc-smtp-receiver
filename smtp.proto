@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package main;
+
+message Email {
+    string from = 1;
+    string to = 2;
+    string data = 3;
+}
+
+message Status {
+    bool status = 1;
+}
+
+service SMTP {
+    rpc SendEmail(Email) returns (Status) {}
+}

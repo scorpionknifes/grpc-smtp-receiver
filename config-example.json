@@ -1,0 +1,10 @@
+{
+  "SMTPPort": 25,
+  "timeout": 10,
+  "server": [
+    {
+      "emailDomain": "email.com",
+      "gRPCServer": "localhost:3001"
+    }
+  ]
+}
